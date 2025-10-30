@@ -2,6 +2,7 @@ from setuptools import setup, find_packages
 from setuptools.command.install import install as _install
 import subprocess
 import os
+import sys
 
 REQUIRED_PIP_PACKAGES = [
     'gradio==3.16.2',
@@ -36,7 +37,7 @@ REQUIRED_PIP_PACKAGES = [
 
 MIM_PACKAGES = [
     "mmengine",
-    "mmcv>=2.0.1",
+    "mmcv<2.2.0,>=2.0.1",
     "mmdet>=3.1.0",
     "mmpose>=1.1.0",
 ]
@@ -46,9 +47,20 @@ class CustomInstallCommand(_install):
         _install.run(self)
         
         print("="*50)
+        print("PIP Start")
+        print("="*50)
+        
+        pip_cmd = [sys.executable, '-m', 'pip', 'install'] + REQUIRED_PIP_PACKAGES
+        try:
+            subprocess.check_call(pip_cmd)
+            print("PIP Fisnish.")
+        except subprocess.CalledProcessError as e:
+            print(f"Fail for PIP installing: {e}")
+            sys.exit(1) 
+
+        print("="*50)
         print("MIM Start")
         print("="*50)
-
 
         try:
             subprocess.check_call(['pip', 'install', '-U', 'openmim'])
@@ -62,7 +74,7 @@ class CustomInstallCommand(_install):
             subprocess.check_call(mim_command)
             print("MIM finish.")
         except subprocess.CalledProcessError as e:
-            print(f"Fial for MIM installing。 {e}")
+            print(f"Fial for MIM installing: {e}")
             return
         
         print("="*50)
