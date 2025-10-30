@@ -9,6 +9,7 @@ REQUIRED_PIP_PACKAGES = [
     'albumentations==1.3.0',
     'opencv-python>=4.5.5.62',
     'imageio==2.9.0',
+    'numpy'=='1.24.3',
     'imageio-ffmpeg==0.4.2',
     'omegaconf==2.1.1',
     'test-tube>=0.7.5',
