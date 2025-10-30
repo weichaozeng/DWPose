@@ -38,7 +38,7 @@ REQUIRED_PIP_PACKAGES = [
 MIM_PACKAGES = [
     "mmengine",
     "mmcv<2.2.0,>=2.0.1",
-    "mmdet>=3.1.0",
+    "mmdet<3.3.0,>=3.1.0",
     "mmpose>=1.1.0",
 ]
 
