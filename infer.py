@@ -12,7 +12,10 @@ from openpose import OpenposeDetector
 if __name__ == '__main__' :
     
     # image_dirs = ["./assets/test.jpeg", "./assets/test1.jpeg", "./assets/test2.jpeg", "./assets/test3.jpeg"]
-    image_dirs = ["/home/zvc/Data/VHand/DWPose/inputs/demo_0.jpg"]
+    image_dirs = [
+        "/home/zvc/Data/VHand/DWPose/inputs/demo_0.jpg",
+        "/home/zvc/Data/VHand/DWPose/inputs/demo_1.jpg",
+        ]
     
     det_config = './dwpose/yolox_config/yolox_l_8xb8-300e_coco.py'
     det_ckpt = './ckpts/yolox_l_8x8_300e_coco_20211126_140236-d3bd2b23.pth'
